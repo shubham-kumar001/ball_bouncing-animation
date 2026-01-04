@@ -1,0 +1,57 @@
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #0f172a;
+        }
+
+        .container {
+            position: relative;
+            height: 80vh;
+            width: 80vw;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            border-radius: 16px;
+            overflow: hidden;
+            /* IMPORTANT */
+        }
+
+        .box {
+            height: 120px;
+            width: 120px;
+            background: radial-gradient(circle at top left, #ff6b6b, #c1121f);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            /* upgraded animation */
+            animation:
+                moveX 4s linear infinite alternate,
+                moveY 1.2s cubic-bezier(.3, .8, .4, 1) infinite alternate;
+
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Horizontal */
+        @keyframes moveX {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: calc(100% - 120px);
+            }
+        }
+
+        /* Vertical bounce */
+        @keyframes moveY {
+            from {
+                bottom: 0;
+            }
+
+            to {
+                bottom: calc(100% - 120px);
+            }
+        }
+  
