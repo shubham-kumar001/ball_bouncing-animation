@@ -1,57 +1,369 @@
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #0f172a;
-        }
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .container {
-            position: relative;
-            height: 80vh;
-            width: 80vw;
-            background: linear-gradient(135deg, #2563eb, #1e40af);
-            border-radius: 16px;
-            overflow: hidden;
-            /* IMPORTANT */
-        }
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-        .box {
-            height: 120px;
-            width: 120px;
-            background: radial-gradient(circle at top left, #ff6b6b, #c1121f);
-            border-radius: 50%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
+/* Game Container */
+.game-container {
+    width: 100%;
+    max-width: 1200px;
+    background: rgba(25, 25, 35, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border: 1px solid #3a3a5d;
+}
 
-            /* upgraded animation */
-            animation:
-                moveX 4s linear infinite alternate,
-                moveY 1.2s cubic-bezier(.3, .8, .4, 1) infinite alternate;
+/* Game Header */
+.game-header {
+    background: linear-gradient(90deg, #ff416c 0%, #ff4b2b 100%);
+    padding: 20px 30px;
+    text-align: center;
+    border-bottom: 3px solid #ffd166;
+}
 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
+.game-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
 
-        /* Horizontal */
-        @keyframes moveX {
-            from {
-                left: 0;
-            }
+.game-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
 
-            to {
-                left: calc(100% - 120px);
-            }
-        }
+/* Game Content Layout */
+.game-content {
+    display: flex;
+    padding: 25px;
+    gap: 25px;
+}
 
-        /* Vertical bounce */
-        @keyframes moveY {
-            from {
-                bottom: 0;
-            }
+@media (max-width: 900px) {
+    .game-content {
+        flex-direction: column;
+    }
+}
 
-            to {
-                bottom: calc(100% - 120px);
-            }
-        }
-  
+/* Game Info Panel */
+.game-info {
+    flex: 1;
+    background: rgba(40, 40, 60, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border: 1px solid #4a4a7a;
+}
+
+/* Score Container */
+.score-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.score-box {
+    background: linear-gradient(135deg, #2d3047 0%, #1b1e2c 100%);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #4a4a7a;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.score-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.score-box h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #ffd166;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.score-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #06d6a0;
+}
+
+/* Controls */
+.controls h3, .difficulty-selector h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+    color: #ffd166;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+
+.control-instructions {
+    background: rgba(30, 30, 46, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.control-instructions p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.key {
+    background: #ff416c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    min-width: 70px;
+    text-align: center;
+}
+
+/* Difficulty Selector */
+.difficulty-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.difficulty-btn {
+    flex: 1;
+    padding: 12px 0;
+    background: #2d3047;
+    border: 2px solid #4a4a7a;
+    color: #b0b0d0;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.difficulty-btn.active {
+    background: #ff416c;
+    color: white;
+    border-color: #ffd166;
+    box-shadow: 0 0 15px rgba(255, 65, 108, 0.5);
+}
+
+.difficulty-btn:hover:not(.active) {
+    background: #3a3a5d;
+    color: white;
+}
+
+/* Game Area */
+.game-area {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.game-canvas-container {
+    position: relative;
+    background: #111122;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid #3a3a5d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 500px;
+}
+
+.game-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 17, 34, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.status-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #ffd166;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 209, 102, 0.7);
+}
+
+.action-btn {
+    background: linear-gradient(90deg, #06d6a0 0%, #118ab2 100%);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(6, 214, 160, 0.4);
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(6, 214, 160, 0.6);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+}
+
+.paddle-info {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    color: #ffd166;
+}
+
+.paddle-position {
+    background: rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+/* Game Instructions */
+.game-instructions {
+    background: rgba(40, 40, 60, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #4a4a7a;
+}
+
+.game-instructions h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffd166;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.game-instructions ul {
+    padding-left: 20px;
+}
+
+.game-instructions li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #d0d0e7;
+}
+
+/* Game Footer */
+.game-footer {
+    background: linear-gradient(90deg, #2d3047 0%, #1b1e2c 100%);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px solid #ff416c;
+}
+
+@media (max-width: 768px) {
+    .game-footer {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+.lives-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.lives-container h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ff416c;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lives {
+    display: flex;
+    gap: 10px;
+}
+
+.life {
+    font-size: 1.8rem;
+    color: #ff416c;
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    color: #a0a0c0;
+    text-align: center;
+}
+
+.game-settings {
+    display: flex;
+    gap: 10px;
+}
+
+.sound-on {
+    background: linear-gradient(90deg, #06d6a0 0%, #118ab2 100%);
+}
+
+.sound-off {
+    background: linear-gradient(90deg, #888888 0%, #666666 100%);
+}
+
+/* Animation for bouncing effect */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.bounce-animation {
+    animation: bounce 0.5s ease infinite;
+}
