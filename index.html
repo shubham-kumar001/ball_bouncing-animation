@@ -1,20 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Animation Upgrade</title>
-
-<link rel="stylesheet" href="style.css">
+    <title>Professional Ball Bouncing Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-    <div class="container">
-        <div class="box"></div>
+    <div class="game-container">
+        <header class="game-header">
+            <h1><i class="fas fa-basketball-ball"></i> BOUNCE MASTER</h1>
+            <p class="game-subtitle">Professional Physics Bouncing Simulator</p>
+        </header>
+        
+        <div class="game-content">
+            <div class="game-info">
+                <div class="score-container">
+                    <div class="score-box">
+                        <h2><i class="fas fa-trophy"></i> SCORE</h2>
+                        <div class="score-value" id="score">0</div>
+                    </div>
+                    <div class="score-box">
+                        <h2><i class="fas fa-clock"></i> TIME</h2>
+                        <div class="score-value" id="time">60s</div>
+                    </div>
+                    <div class="score-box">
+                        <h2><i class="fas fa-bullseye"></i> BOUNCES</h2>
+                        <div class="score-value" id="bounces">0</div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <h3><i class="fas fa-gamepad"></i> CONTROLS</h3>
+                    <div class="control-instructions">
+                        <p><span class="key">MOUSE</span> - Move paddle</p>
+                        <p><span class="key">SPACE</span> - Launch ball</p>
+                        <p><span class="key">R</span> - Reset game</p>
+                        <p><span class="key">P</span> - Pause game</p>
+                    </div>
+                    
+                    <div class="difficulty-selector">
+                        <h3><i class="fas fa-sliders-h"></i> DIFFICULTY</h3>
+                        <div class="difficulty-buttons">
+                            <button class="difficulty-btn active" data-level="easy">EASY</button>
+                            <button class="difficulty-btn" data-level="medium">MEDIUM</button>
+                            <button class="difficulty-btn" data-level="hard">HARD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-area">
+                <div class="game-canvas-container">
+                    <canvas id="gameCanvas" width="800" height="500"></canvas>
+                    
+                    <div class="game-status" id="gameStatus">
+                        <div class="status-text">READY TO PLAY</div>
+                        <button id="startBtn" class="action-btn">
+                            <i class="fas fa-play"></i> START GAME
+                        </button>
+                    </div>
+                    
+                    <div class="paddle-info">
+                        <div class="paddle-position">
+                            <i class="fas fa-arrows-alt-h"></i> Paddle Position: <span id="paddlePos">50%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-instructions">
+                    <h3><i class="fas fa-info-circle"></i> HOW TO PLAY</h3>
+                    <ul>
+                        <li>Use your mouse to move the paddle left and right</li>
+                        <li>Press SPACE to launch the ball</li>
+                        <li>Keep the ball bouncing by hitting it with the paddle</li>
+                        <li>Each bounce increases your score</li>
+                        <li>If the ball hits the bottom, you lose a life</li>
+                        <li>Game ends when time runs out or you lose all lives</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="game-footer">
+            <div class="lives-container">
+                <h3><i class="fas fa-heart"></i> LIVES</h3>
+                <div class="lives" id="lives">
+                    <i class="fas fa-heart life"></i>
+                    <i class="fas fa-heart life"></i>
+                    <i class="fas fa-heart life"></i>
+                </div>
+            </div>
+            
+            <div class="footer-info">
+                <p>Professional Ball Bouncing Game &copy; 2023 | Created with HTML5, CSS3 & JavaScript</p>
+            </div>
+            
+            <div class="game-settings">
+                <button id="pauseBtn" class="action-btn">
+                    <i class="fas fa-pause"></i> PAUSE
+                </button>
+                <button id="resetBtn" class="action-btn">
+                    <i class="fas fa-redo"></i> RESET
+                </button>
+                <button id="soundToggle" class="action-btn sound-on">
+                    <i class="fas fa-volume-up"></i> SOUND
+                </button>
+            </div>
+        </footer>
     </div>
-
+    
+    <script src="js/game.js"></script>
 </body>
-
 </html>
